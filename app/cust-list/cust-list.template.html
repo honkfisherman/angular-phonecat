@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  Select Customer<br>
+<select class="names" ng-model="$ctrl.selectedID" ng-options="x.name for x in names" style="width:350px;">
+	<option value="">-- Select Customer --</option>
+</select>
+
+  Sort by:
+<select ng-model="$ctrl.orderProp">
+  <option value="id">ID</option>
+  <option value="name">Name</option>
+</select><br>
+
+  All Customers      
+<ul>
+  <li ng-repeat="x in names | orderBy:$ctrl.orderProp">
+   {{ x.id + ', ' + x.lastModified + ', ' + x.name + ', ' + x.billingAddress + ', ' + x.shippingAddress + ', ' + x.phoneNumber }}
+  </li>
+</ul>
+
+  Filtered Customer
+<ul>
+  <li ng-repeat="x in names | filter:$ctrl.selectedID">
+   {{ x.id + ', ' + x.lastModified + ', ' + x.name + ', ' + x.billingAddress + ', ' + x.shippingAddress + ', ' + x.phoneNumber }}
+  </li>
+</ul>
+
+Selected ID is {{$ctrl.selectedID}}
+</div>
